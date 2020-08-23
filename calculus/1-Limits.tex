@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+
+\begin{document}
+
+\title{Limits}
+\author{Andy Chong Sam}
+\date{}
+\maketitle
+
+\section{Definition}
+
+The limit of f(x) is L as x approaches a: 
+
+\begin{flalign}
+ \lim_{x \to a} f(x) = L
+\end{flalign}
+
+\noindent The relationship described in (1) above assumes that the we get the same value L as we approach from both sides of of a. A left hand (2) or right 
+hand (3) limit can be described as well:
+
+\begin{flalign}
+ \lim_{x \to a-} f(x) = L
+\end{flalign}
+
+\begin{flalign}
+ \lim_{x \to a+} f(x) = L
+\end{flalign}
+
+\section{Properties of Limits}
+
+Complex functions can be more easily evaluated using several properties. If the function is continuous at a:
+
+\begin{flalign*}
+\lim_{x \to a} f(x) = a
+\end{flalign*}
+
+\noindent For a constant k:
+
+\begin{flalign*}
+\lim_{x \to a} kf(x) = k \lim_{x \to a} f(x) 
+\end{flalign*}
+
+\noindent For sum and differences:
+
+\begin{flalign*}
+\lim_{x \to a} (f(x) + g(x)) =  \lim_{x \to a} f(x) +  \lim_{x \to a} g(x)
+\end{flalign*}
+\begin{flalign*}
+\lim_{x \to a} (f(x) - g(x)) =  \lim_{x \to a} f(x) -  \lim_{x \to a} g(x)
+\end{flalign*}
+
+\noindent For products and quotients:
+
+\begin{flalign*}
+ \lim_{x \to a} f(x) g(x) =  \lim_{x \to a} f(x)  \lim_{x \to a} g(x)
+\end{flalign*}
+\begin{flalign*}
+ \lim_{x \to a} \frac{f(x)}{g(x)} = \frac {\lim_{x \to a} f(x)}{\lim_{x \to a} g(x)}
+\end{flalign*}
+
+\end{document}
