@@ -1,0 +1,79 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{graphicx}
+
+\begin{document}
+
+
+\title{Compounding Interest and Euler's Number (e) }
+\author{Andy Chong Sam}
+\date{2021-05-17}
+\maketitle
+
+\section {Compounding Interest}
+
+\par\noindent Describing compounding interest for a rate of return r across time periods t for a fixed payment a takes the form: 
+
+\begin{flalign}
+a (1+r)^t 
+\end{flalign}
+
+\par\noindent We can derive expression 1 as follows:
+
+\begin{flalign*}
+t=0 \rightarrow a(1+r)^0=a
+\end{flalign*}
+
+\par\noindent At t=1, we need to add the original investment plus any interest earned (ar) during the period.
+
+\begin{flalign*}
+t=1 \rightarrow a + ar
+\end{flalign*}
+
+\par\noindent Now when t=2, we add the amount we started with(a+ar), to the interest earned in this meriod (a+ar)r.
+
+\begin{flalign*}
+t=2 \rightarrow (a + ar) + (a + ar)r \\ = (a + ar) (1 +r) \\= a (1 + r )(1 + r)\\=a(1+r)^2
+\end{flalign*}
+
+\par\noindent Now for t=3, the initial amount is (a + ar)(1+ r), or the amount at t=2. The interest earned at t=3 is therefore (a+ar)(1+r)r. 
+
+\begin{flalign*}
+t=3 \rightarrow (a+ar)(1+r) + (a+ar)(1+r)r \\ 
+= (a+ar)(1+r)(1 +r)  \\
+= a(1+r)(1+r)(1+r) \\=a(1+r)^3
+\end{flalign*}
+
+\par\noindent We can see how that the total value of an investment can be described as by: \(V=a(1+r)^{t}\), where t is the number of elapsed periods, r is the interest, and a is the initial amount.
+
+\newpage
+
+\section {Deriving Euler's Number (e)}
+
+\par\noindent  Suppose that a \$1 investment makes 100 \% interest. If interest is credited once at the end of the year, then the value at the end of the year is just 1 + 1 = 2. Now suppose that the interest will be credited twice a year, the end value will be 2.25.
+
+\begin{flalign*}
+1(1+\frac{1}{2})^2 = 2.25
+\end{flalign*}
+
+\par As you increase the number of times the interest is credited, we will eventually converge at e:
+
+\begin{flalign*}
+( 1+\frac{1}{2} )^2 = 2.25 \\
+(1+\frac{1}{100})^{100} \approx 2.7048 \\
+(1+\frac{1}{1000})^{1000} \approx 2.7169 \\
+(1+\frac{1}{10000})^{10000} \approx 2.7181 \\
+(1+\frac{1}{10000})^{100000} \approx 2.7182 \
+\end{flalign*}
+
+\par The value of e is 2.71828... The formal definition of e is therefore:
+
+\begin{flalign}
+e = \lim_{x \to \infty} (1+ \frac{1}{n})^n
+\end{flalign}
+
+
+\end{document}
