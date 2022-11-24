@@ -30,10 +30,8 @@
 		\intlongdivision{5}{2} \intlongdivision{2}{2} \intlongdivision{1}{2}
 	\end{flalign*}
 
-	\par\noindent The recorded list of remainders is \(10110001101\). Reversing the list gets us the binary representation of 1421: \(10110001101\). 
-	
-	\section{Binary to Decimal}
-	
+	\par\noindent The recorded list of remainders is \(10110001101\). Reversing the list gets us the binary representation of 1421: \textbf{10110001101}. 
+	\newline
 	\par\noindent Let's try the reverse process now. Suppose that I have \(10110001101\) and I want to transform that into a decimal number. Similar to the example in the introduction, we can assign place
 	values to all the binary digits:
 	
@@ -65,6 +63,41 @@
 	\par \noindent If we above result was processed through a 12 bit computer, -1421 would be stored as \textbf{101001110011}.
 	
 	\par\noindent 
+
+\section{Fractional Amounts}
+
+\par\noindent For amounts less than one, we will multiply the number by 2 and observe whether or not the result is less than one or not. We will then take the fractional part of the result and repeat the process. The algorithm ends when we obtain a fractional result of 0.
+\newline
+\par\noindent We will evaluate \(0.625\) as an example:
+
+	\begin{center}
+	\includegraphics[width=6cm]{frac-binary-1.png}
+\end{center}
+
+
+\par\noindent We can validate these results. Here are the digits with labeled placed values. Notice that as we are now dealing with values less than 1, the place values are now negative: 
+
+\begin{center}
+	\includegraphics[width=8cm]{frac-binary-2.png}
+\end{center}
+
+\par\noindent We perform the following calculation:
+
+\begin{flalign*}
+	2^{-1} + 2^{-3} = 0.625
+\end{flalign*}
+
+
+\par\noindent Some fractional points cannot be represent with a finite number of bits. Instead we get a never ending but sometimes predictable sequence of bits. Before we see an actual example of the conversion, consider that this result is not unusual even in the decimal system. For example, it is not possible to represent the fraction \( \frac{1}{3}\) in a finite sequence, instead we get the unending sequence: \(0.33333...\)
+
+\newpage
+\par\noindent Consider the case of converting 0.2 into binary:
+
+	\begin{center}
+	\includegraphics[width=6cm]{frac-binary-3.png}
+\end{center}
+
+\par \noindent The stopping condition of the algorithm is never encountered, and we end up with an endless sequence of \textbf{001100110011}...
 
 
 \end{document}
