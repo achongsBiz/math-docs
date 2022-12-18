@@ -14,7 +14,7 @@
 
 \section{Linear Combinations Visual Intuition}
 \begin{minipage}[c]{.5\linewidth}
-	\par \noindent We first start with the idea of a generic vector which can be scaled by a positive or negative k. As seen on Figure 1, given positive enough or negative values of k, the vector can occupy a line of space.
+	\par \noindent We first start with the idea of a generic vector which can be scaled by a positive or negative k. As seen on Figure 1, scaling the vector positively or negatively through \(k\) will result in a line.
 \end{minipage}%%%
 \begin{minipage}[c]{.5\linewidth}
 \begin{center}
@@ -28,7 +28,7 @@
 \linebreak
 \linebreak
 \begin{minipage}[c]{.5\linewidth}
-	\par \noindent Now suppose we have two vectors \( \vec a \) and \( \vec b \).  They can each be scaled independently. Both vectors can also be added together. With some visual imagination we how by varying the scaling factor of each vector we can reach every point on the two dimensional plane.
+	\par \noindent Now suppose we have two vectors \( \vec a \) and \( \vec b \).  They can each be scaled independently. Both vectors can also be added together. With some visual imagination we can see that by varying the scaling factor of each vector we can reach every point on the two dimensional plane.
 \end{minipage}%%%
 \begin{minipage}[c]{.5\linewidth}
 \begin{center}
@@ -82,22 +82,23 @@ k_n
 	y_n \\
 \end{array}\right) =
 \left(\begin{array}{@{}c@{}}
-	k_1 x_1 + k_2 x_2 + ... + k_n x_n \\
-	k_1 y_1 + k_2 y_2 + ... + k_n y_n \\
+	k_1 x_1 + k_2 x_2 + k_3 x_3... + k_n x_n \\
+	k_1 y_1 + k_2 y_2 + k_3 y_3... + k_n y_n \\
 \end{array}\right) 
 \]
 \newline
 \par \noindent The expression above can be rewritten in the form of a matrix multiplication:
 \newline
 \[
-\left(\begin{array}{@{}cccc@{}}
-	x_1 & x_2 & ... &x_n\\
-	y_1 & y_2 & ... &y_n\\
+\left(\begin{array}{@{}ccccc@{}}
+	x_1 & x_2 & x_3 &... &x_n\\
+	y_1 & y_2 & y_3 & ... &y_n\\
 	
 \end{array}\right) 
 \left(\begin{array}{@{}c@{}}
 	k_1 \\
 	k_2 \\
+	k_3 \\
 	... \\
 	k_n
 \end{array}\right) 
@@ -153,7 +154,7 @@ k_3
 \framebox{
 	\parbox{\linewidth}
 	{
-		\par\noindent Write \(<12,10>\) as a linear combination of \(<2,2>\) and \(<1,3>\).
+		\par\noindent Write \(<10,12>\) as a linear combination of \(<2,2>\) and \(<3,1>\).
 		\newline
 		\par\noindent We want to solve for the matrix \(<k_1, k_2>\):
 		\[
@@ -319,10 +320,10 @@ k_3
 \section{Linear Independence}
 \par\noindent If a vector can be obtained by scaling another vector, then the two vectors are dependent. In a different case, suppose we have a set of three vectors. If one of the vectors can be derived by a combination of scaling and adding the other two vectors, then the set is also dependent. 
 \newline
-\par \noindent A set of vectors is dependent if there exists \( c_1 ... c_n\) such that \(c_1v_1 + ... c_nv_n = 0\). If the only solution is the trivial solution \(c_1 = ... c_n = 0\), then the set is independent. 
+\par \noindent A set of vectors is dependent if there exists \( k_1 ... k_n\) such that \(k_1 \vec v_1 + ... k_n \vec v_n = 0\). If the only solution is the trivial solution \(k_1 = ... k_n = 0\), then the set is independent. 
 \newline
 \begin{minipage}[c]{.5\linewidth}
-	\par \noindent Suppose we have \( \vec a = <1,1>\) and \( \vec b = <2,2>\) as shown on Figure 4. Since \( 2\vec a = \vec b\), we know that set \( \{ \vec a, \vec b\}\) is dependent.
+	\par \noindent Suppose we have \( \vec a = <1,1>\) and \( \vec b = <2,2>\) as shown on Figure 4. Since \( 2\vec a = \vec b\), the set \( \{ \vec a, \vec b\}\) is dependent.
 \end{minipage}%%%
 \begin{minipage}[c]{.5\linewidth}
 	\begin{center}
@@ -364,7 +365,7 @@ k_3
 	2 & -1 & 0\\
 	2 &  5 & 0 \\
 \end{array}\right)
-\xrightarrow[]{R_1 - \frac{1}{2}R_2 = R_2}
+\xrightarrow[]{R_1 - \frac{1}{2}R_2 = R_1}
 	\left(\begin{array}{@{}cc|c@{}}
 	1 & -\frac{7}{2} & 0\\
 	2 &  5 & 0 \\
@@ -382,6 +383,11 @@ k_3
 	0 &  1 & 0 \\
 \end{array}\right)
 \xrightarrow[]{R_1 + \frac{7}{2}R_2 = R_1}
+\left(\begin{array}{@{}cc|c@{}}
+	2 &  0 & 0\\
+	0 &  1 & 0 \\
+\end{array}\right)
+\xrightarrow[]{\frac{1}{2}R_1 = R_1}
 \left(\begin{array}{@{}cc|c@{}}
 	1 &  0 & 0\\
 	0 &  1 & 0 \\
@@ -432,7 +438,7 @@ k_3
 		\xrightarrow[]{R_1 <--> R_2}
 		\left(\begin{array}{@{}cc|c@{}}
 			4 & -8 & 0\\
-			-1 & 6 & 0 \\
+			-1 & 2 & 0 \\
 		\end{array}\right)
 		\xrightarrow[]{R_1 + 3R_2 = R_1}
 		\left(\begin{array}{@{}cc|c@{}}
@@ -492,7 +498,7 @@ k_3
 			\xrightarrow[]{\frac{1}{5}R_2 = R_2}
 			\left(\begin{array}{@{}ccc|c@{}}
 				1 & -2 & 1 & 0\\
-				0 &  1 & \frac{2}{5} & 0 \\
+				0 &  1 & -\frac{2}{5} & 0 \\
 				3 & 0 & 1 & 0  \\
 			\end{array}\right)
 			\xrightarrow[]{R_3 - 3R_1 = R_3}
@@ -500,13 +506,13 @@ k_3
 			\[
 			\left(\begin{array}{@{}ccc|c@{}}
 				1 & -2 & 1 & 0\\
-				0 &  1 & \frac{2}{5} & 0 \\
+				0 &  1 & -\frac{2}{5} & 0 \\
 				0 & 6 & -2 & 0  \\
 			\end{array}\right)
 			\xrightarrow[]{R_3 - 6R_2 = R_3}
 			\left(\begin{array}{@{}ccc|c@{}}
 				1 & -2 & 1 & 0\\
-				0 &  1 & \frac{2}{5} & 0 \\
+				0 &  1 & -\frac{2}{5} & 0 \\
 				0 & 0 & \frac{2}{5} & 0  \\
 			\end{array}\right)
 		\xrightarrow[]{R_2+R_3=R_2}
@@ -528,7 +534,13 @@ k_3
 		1 & 0 & 1 & 0\\
 		0 &  1 & 0 & 0 \\
 		0 & 0 & 1 & 0  \\
-	\end{array}\right)		
+	\end{array}\right)	
+\xrightarrow[]{R_1 - R_3 = R_1}	
+	\left(\begin{array}{@{}ccc|c@{}}
+	1 & 0 & 0 & 0\\
+	0 &  1 & 0 & 0 \\
+	0 & 0 & 1 & 0  \\
+\end{array}\right)	
 		\]
 		\[
 		\left(\begin{array}{@{}c@{}}
@@ -580,16 +592,24 @@ k_3
 		\end{array}\right)
 		\xrightarrow[]{R_1 - 2R_2 = R_1}
 		\left(\begin{array}{@{}ccc|c@{}}
+			1 & -1 & -2 & 0\\
+			0 & 1 & 1 & 0 \\
+			1 & 0 & -1 & 0  \\
+			\end{array}\right)
+		\xrightarrow[]{R_1+R_2 = R_1}
+		\left(\begin{array}{@{}ccc|c@{}}
 			1 & 0 & -1 & 0\\
 			0 & 1 & 1 & 0 \\
 			1 & 0 & -1 & 0  \\
 		\end{array}\right)
 		\xrightarrow[]{R_3 - R_1 = R_3}
-		\left(\begin{array}{@{}ccc|c@{}}
-			1 & 0 & -1 & 0\\
-			0 &  1 & 1 & 0 \\
-			0 & 0 & 0 & 0  \\
-		\end{array}\right)
+		\]
+		\[
+			\left(\begin{array}{@{}ccc|c@{}}
+		1 & 0 & -1 & 0\\
+		0 & 1 & 1 & 0 \\
+		0 & 0 & 0 & 0  \\
+	\end{array}\right)	
 		\]
 		\par\noindent We are left with \(k_1 - k_3 = 0\) and \(k_2 + k_3 = 0\), or \(k_1 = k_3\) and \(k_2 = -k_3\). Any combination of \(k_1,k_2,k_3\) that meets the criteria is a possible solution.
 		\newline
@@ -625,7 +645,7 @@ A set of vectors comprise a  \textbf{basis} if they are linearly independent and
 		\par \noindent We can arrive at \(I_2\) by applying the following operations:
 		\(R_1 + R_2 = R_1\),
 		\(R_2 + 2R_1 = R_2\),
-		\(\frac{1}{23}R_3 = R_3\),
+		\(\frac{1}{23}R_2 = R_32\),
 		\(R_1 - 9R_2 = R_1\)
 		\newline
 		\par\noindent Since the solution is \(<k_1,k_2>\) = \(<0,0>\), the system is independent. \textbf{The set is a basis for \(\mathbb{R}^2\).}
@@ -636,7 +656,7 @@ A set of vectors comprise a  \textbf{basis} if they are linearly independent and
 \framebox{
 	\parbox{\linewidth}
 	{
-		\par\noindent Is the set \{  \(<4,2,5>\),\(<3,1,-2>\),\(<6,2,0>\) \} a basis for \(\mathbb{R}^3\)?
+		\par\noindent Is the set \{  \(<4,2,5>\),\(<3,-1,-2>\),\(<6,2,0>\) \} a basis for \(\mathbb{R}^3\)?
 		\newline
 		\par\noindent We  check for independence by using row reduction, we are solving for \(<k_1, k_2, k_3>\) in:
 		\[
@@ -659,7 +679,7 @@ A set of vectors comprise a  \textbf{basis} if they are linearly independent and
 		\]		
 		\par\noindent We arrive at \(I_3\) by applying the following operations: \(\frac{1}{4}R_1 = R_1\), \(R_2 - 2R_1 = R_2 \), \( -\frac{2}{5}R_2 = R_2\), \(R1 - \frac{3}{4}R_2 = R_1\), \(R_3 - 5R_1 = R_3\), \(R_3 + 2R_2 = R_3, -\frac{5}{26}R_3 = R_3\), \(R_2 - \frac{2}{5}R_3 = R_2\), \(R_1 - \frac{6}{5}R_3 = R_1\) 	
 		\newline
-		\par\noindent Since \(<k_1, k_2, k_3\) = \(<0, 0, 0>\), \textbf{the set is a basis for \(\mathbb{R}^2\)}.
+		\par\noindent Since \(<k_1, k_2, k_3>\) = \(<0, 0, 0>\), \textbf{the set is a basis for \(\mathbb{R}^2\)}.
 }}
 \newline
 \newline
@@ -761,7 +781,7 @@ A set of vectors comprise a  \textbf{basis} if they are linearly independent and
 		2(ka) \\ 
 	\end{array}\right)
 	\]
-	\par\noindent Start with applying \(a\) to the space, then multiply the resulting vector by k:
+	\par\noindent Next, we apply \(a\) to the space, then multiply the resulting vector by k:
 	\[
 	k	\left(\begin{array}{@{}c@{}}
 		a \\
@@ -842,17 +862,17 @@ A set of vectors comprise a  \textbf{basis} if they are linearly independent and
 	\left(\begin{array}{@{}c@{}}
 		a \\
 		b \\
-		3a-5b
+		3b-5a
 	\end{array}\right) + 
 	\left(\begin{array}{@{}c@{}}
 		c \\
 		d \\
-		3c-5d
+		3d-5c
 	\end{array}\right) = 
 	\left(\begin{array}{@{}c@{}}
 		a + c \\
 		b + d\\
-		(3a-5b)+ (3c-5d)
+		(3b-5a)+ (3d-5c)
 	\end{array}\right)	
 \]
 \par\noindent We will now plug in \(a+c\) and \(b+d\) directly into the space:
@@ -860,10 +880,10 @@ A set of vectors comprise a  \textbf{basis} if they are linearly independent and
 \left(\begin{array}{@{}c@{}}
 	a + c \\
 	b + d \\
-	3(a+c) + 5(b+d)
+	3(b+d) - 5(a+c)
 	\end{array}\right) 
 \] 
-\par\noindent Since \(3(a+c) + 5(b+d) = (3a - 5b) + (3c-5d)\), the space is closed under addition.
+\par\noindent Since \(3(b+d)-5(a+c) = (3b-5a)+(3d-5c)\), the space is closed under addition.
 \newline
 \par\noindent \textbf{(3)} To test for closure under scalar multiplication we first apply \(k<a,b,3b-5a>\) to the space.
 	\[
