@@ -379,6 +379,296 @@ kT(\vec u) = k
 	
 \end{minipage}
 
-
-
+\section {Additional Problems}
+\framebox{
+	\parbox{\linewidth}{
+\par \noindent \textbf{Ex. 1}  Is the following a linear transformation?
+\begin{flalign*}
+	T: \mathbb{R}^2 \rightarrow \mathbb{R}^2 
+\end{flalign*}
+\[
+T
+\left(\begin{array}{@{}c@{}}
+	x \\
+	y \\
+\end{array}\right) = 
+\left(\begin{array}{@{}c@{}}
+	x^2 \\
+	y^2 \\
+\end{array}\right)
+\]
+\par\noindent Let \(\vec u=<a,b>\) and \( \vec v = <c,d>\).
+\newline
+\par\noindent We test the first condition:
+\[
+T(\vec u) + T(\vec v) = 
+\left(\begin{array}{@{}c@{}}
+	a^2 + c^2 \\
+	b^2 + d^2 \\
+\end{array}\right)
+\]
+\[
+T(\vec u + \vec v) = 
+\left(\begin{array}{@{}c@{}}
+	(a+c)^2 \\
+	(b+d)^2 \\
+\end{array}\right) = 
+\left(\begin{array}{@{}c@{}}
+	a^2 + 2ac + c^2 \\
+	b^2 + 2bd + d^2 \\
+\end{array}\right)
+\]
+\par \noindent Since \(T(\vec u) + T(\vec v) \ne T(\vec u + \vec v)\), \textbf{this is not a linear transformation}.
+}}
+\newline
+\newline
+\newline
+\framebox{
+	\parbox{\linewidth}{
+\textbf{Ex. 2}	Is the following a linear transformation?
+\begin{flalign*}
+	T: \mathbb{R}^3 \rightarrow \mathbb{R}^4
+\end{flalign*}
+\[T
+\left(\begin{array}{@{}c@{}}
+	x \\
+	y \\
+	z \\
+\end{array}\right) = 
+\left(\begin{array}{@{}c@{}}
+	x + y\\
+	y + z \\
+	x - z \\
+	z - y
+\end{array}\right)
+\]
+\par\noindent Let \(\vec u=<a,b>\) and \( \vec v = <c,d>\).
+\newline
+\par\noindent We test the first condition:	
+\[
+T(\vec u) + T(\vec v) = 
+\left(\begin{array}{@{}c@{}}
+	 a+b+d+e\\
+	b+c+e+f \\
+	a-c+d-f \\
+	c-b+f-e
+\end{array}\right)
+\]
+\[
+T(\vec u + \vec v) = 
+\left(\begin{array}{@{}c@{}}
+	a+d+b+e\\
+	b+e+c+f \\
+	(a+d) - (c+f) \\
+	(c+f) - ( b + e)
+\end{array}\right)=
+\left(\begin{array}{@{}c@{}}
+	a+b+d+e\\
+	b+c+e+f \\
+	a-c+d-f \\
+	c-b+f-e
+\end{array}\right)
+\]
+\par\noindent \textbf{Condition Met}
+\newline
+\par\noindent We test the second condition:
+\[
+T(k \vec u) = 
+\left(\begin{array}{@{}c@{}}
+	ak + bk\\
+	bk + ck \\
+	ak - ck \\
+	ck - bk
+\end{array}\right) = k
+\left(\begin{array}{@{}c@{}}
+	a + b\\
+	b + c \\
+	a - c \\
+	c - b
+\end{array}\right)
+\]
+\[
+kT(\vec u) = k
+\left(\begin{array}{@{}c@{}}
+	a + b\\
+	b + c \\
+	a - c \\
+	c - b
+\end{array}\right)
+\]
+\par \noindent \textbf{Condition Met}
+\newline
+\par\noindent T is a linear transformation.
+}}
+\framebox{
+	\parbox{\linewidth}{
+\par\noindent \textbf{Ex. 3} For T in example 2, determine the kernel. 
+\newline
+\par\noindent We start by reducing the transformation using a matrix:
+\[
+T
+\left(\begin{array}{@{}c@{}}
+	x \\
+	y \\
+	z \\
+\end{array}\right) = 
+\left(\begin{array}{@{}c@{}}
+	x + y\\
+	y + z \\
+	x - z \\
+	z - y
+\end{array}\right)
+\rightarrow
+\left(\begin{array}{@{}ccc@{}}
+	1 & 1 & 0\\
+	0 & 1 & 1 \\
+	1 & 0 & -1 \\
+	0 & -1 & 1
+\end{array}\right)
+\] 
+\[
+\left(\begin{array}{@{}ccc@{}}
+	1 & 1 & 0\\
+	0 & 1 & 1 \\
+	1 & 0 & -1 \\
+	0 & -1 & 1
+\end{array}\right)
+\xrightarrow{R_1-R_2 = R_1}
+\left(\begin{array}{@{}ccc@{}}
+	1 & 0 & -1\\
+	0 & 1 & 1 \\
+	1 & 0 & -1 \\
+	0 & -1 & 1
+\end{array}\right)
+\xrightarrow{R_3-R_1 = R_3}
+\left(\begin{array}{@{}ccc@{}}
+	1 & 0 & -1\\
+	0 & 1 & 1 \\
+	0 & 0 & 0 \\
+	0 & -1 & 1
+\end{array}\right)
+\xrightarrow{R_2 + R_4 = R_2}
+\]
+\[
+\left(\begin{array}{@{}ccc@{}}
+	1 & 0 & -1\\
+	0 & 0 & 2 \\
+	0 & 0 & 0 \\
+	0 & -1 & 1
+\end{array}\right)
+\xrightarrow{\frac{1}{2}R_2= R_2}
+\left(\begin{array}{@{}ccc@{}}
+	1 & 0 & -1\\
+	0 & 0 & 1 \\
+	0 & 0 & 0 \\
+	0 & -1 & 1
+\end{array}\right)
+\xrightarrow{R_1 + R_2 = R_1}
+\left(\begin{array}{@{}ccc@{}}
+	1 & 0 & 0\\
+	0 & 0 & 1 \\
+	0 & 0 & 0 \\
+	0 & -1 & 1
+\end{array}\right)
+\xrightarrow{R_4 - R_2 = R_4}
+\left(\begin{array}{@{}ccc@{}}
+	1 & 0 & 0\\
+	0 & 0 & 1 \\
+	0 & 0 & 0 \\
+	0 & 1 & 0
+\end{array}\right)
+\]
+\newline
+\par\noindent So \[	Ker(T) = \left\{ \begin{array}{r} 
+	x= 0 \\
+	y= 0 \\
+	z = 0 \\
+\end{array} \right\}\] 
+}}
+\newline
+\newline
+\newline
+\framebox{
+	\parbox{\linewidth}{
+		\par\noindent \textbf{Ex. 4} Given the following matrix A, find the kernel:
+		\[
+		A=
+		\left(\begin{array}{@{}ccc@{}}
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			7 & 8 & 9 \\
+		\end{array}\right)
+	\]
+	\[
+	\left(\begin{array}{@{}ccc@{}}
+		1 & 2 & 3 \\
+		4 & 5 & 6 \\
+		7 & 8 & 9 \\
+	\end{array}\right)
+\left(\begin{array}{@{}c@{}}
+	x \\
+	y \\
+	z \\
+\end{array}\right)
+= 
+\left(\begin{array}{@{}c@{}}
+	x + 2y + 3z \\
+	4x + 5y + 6z  \\
+	7x + 8y + 9z \\
+\end{array}\right)
+	\]		
+	\par\noindent The kernel is the solution to the following system:
+	\begin{flalign*}
+		x + 2y + 3z = 0 \\
+		4x + 5y + 6z = 0  \\
+		7x + 8y + 9z = 0 
+	\end{flalign*}
+	\par\noindent ... which can be achieved through row reduction:
+	\[
+		\left(\begin{array}{@{}ccc@{}}
+			1 & 2 & 3 \\
+			4 & 5 & 6 \\
+			7 & 8 & 9 \\
+		\end{array}\right)
+	\xrightarrow[]{R_2 - 4R_1 = R_2}
+	\left(\begin{array}{@{}ccc@{}}
+		1 & 2 & 3 \\
+		0 & -3 & -6 \\
+		7 & 8 & 9 \\
+	\end{array}\right)
+	\xrightarrow[]{-\frac{1}{3}R_2 = R_2}
+	\left(\begin{array}{@{}ccc@{}}
+		1 & 2 & 3 \\
+		0 & 1 & 2 \\
+		7 & 8 & 9 \\
+	\end{array}\right)
+\xrightarrow[]{R_3 - 7R_1 = R_3}
+	\]
+	\[
+		\left(\begin{array}{@{}ccc@{}}
+		1 & 2 & 3 \\
+		0 & 1 & 2 \\
+		0 & -6 & -12 \\
+	\end{array}\right)
+\xrightarrow[]{R_3 + 6R_2 = R_3}
+		\left(\begin{array}{@{}ccc@{}}
+	1 & 2 & 3 \\
+	0 & 1 & 2 \\
+	0 & 0 & 0 \\
+\end{array}\right)
+\xrightarrow[]{R_1 - 2R_2 = R_1}
+		\left(\begin{array}{@{}ccc@{}}
+	1 & 0 & -1 \\
+	0 & 1 & 2 \\
+	0 & 0 & 0 \\
+\end{array}\right)	\]
+\par\noindent We are left with a system of equations that contains \(x - z =0\) and \(y + 2z = 0\), so the solution is:
+\[
+	Ker(T) = \left\{ \begin{array}{r} 
+	x= s \\
+	y= -2s \\
+\end{array} \right\}, s \in \mathbb{R} 
+\]
+\	
+}}
 \end{document}	
