@@ -671,4 +671,67 @@ T
 \]
 \	
 }}
+\section {Image Transformation}
+\par\noindent An application of matrix transformation is found in computer graphics. Image editing tools can scale, shear, and rotate a particular image. In this section, we will cover examples of scaling and shearing. Suppose we have the image below, and every pixel is represented by a vector.
+
+\begin{center}
+\includegraphics[width=4cm]{cate-original.jpg} \\
+\textbf{Figure 3}
+\end{center}
+
+\subsection{Scaling}
+\par \noindent In the following example, we describe a 1.5x vertical scaling using \(A\vec{v} = B\):
+\[
+\left(\begin{array}{@{}cc@{}}
+	1 & 0 \\
+	0 & \frac{3}{2} \\
+\end{array}\right)
+\left(\begin{array}{@{}c@{}}
+	x \\
+	y \\
+\end{array}\right)= B
+\]
+\par \noindent For \( \vec v = <1,1>\), this transformation yields \(<1,1.5>\). On the diagram below, we see on the left the result of two of these vectors in addition to the vector \(\vec v=<-1,-1>\). On the right, we see the same representation but only showing the tips of the vectors.
+
+\begin{center}
+	\includegraphics[width=8cm]{scale.png}\\
+	\textbf{Figure 4}
+\end{center}
+
+\par\noindent If we can imagine every pixel of the image as being the tip of a vector, and apply the transformation described above we will see that the image stretches vertically:
+
+\begin{center}
+	\includegraphics[width=4cm]{cate-original.jpg}
+	\includegraphics[width=4cm]{cate-scaled.jpg}\\
+	\textbf{Figure 5}
+\end{center}
+
+\subsection {Shearing}
+\par \noindent We will now consider the following transformation:
+\[
+\left(\begin{array}{@{}cc@{}}
+	1 & 1.5 \\
+	0 & 1\\
+\end{array}\right)
+\left(\begin{array}{@{}c@{}}
+	x \\
+	y \\
+\end{array}\right)= B
+\]
+
+\par \noindent Supposed we provided \(\vec v = <1,1>\) to the transformation, in return we would get \(<2.5,1>\). The diagram below shows the result of transforming a few vectors:
+
+\begin{center}
+	\includegraphics[width=8cm]{shear.png}\\
+	\textbf{Figure 6}
+\end{center}
+
+\par\noindent If we apply this shear to all the pixels on an image, we would observe the following:
+
+\begin{center}
+	\includegraphics[width=4cm]{cate-original.jpg}
+	\includegraphics[width=5.5cm]{cate-sheared.jpg}\\
+	\textbf{Figure 7}
+\end{center}
+
 \end{document}	
