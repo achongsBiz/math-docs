@@ -147,7 +147,7 @@
  \end{array}\right) 
  \]
 	
-\par \noindent We can describe the \textbf{image} as: \(x=2s\) and \(y=2t\), where \(s,t \in \mathbb{R}\). Now suppose you were not given the transformation definition but only matrix A. We can arrive at the transformation by simply carrying out the matrix multiplication of the standard form:
+\par \noindent We can describe the \textbf{image} as: \(x=2s\) and \(y=3t\), where \(s,t \in \mathbb{R}\). Now suppose you were not given the transformation definition but only matrix A. We can arrive at the transformation by simply carrying out the matrix multiplication of the standard form:
 
 		\[A=
 \left(\begin{array}{@{}cc@{}}
@@ -242,7 +242,7 @@ The key point is that for any value of \(s\) the \(x\), \(y\), \(z\) values prod
 	\item \(T(\vec u + \vec v) = T(\vec u) + T(\vec v)\), where \(\vec u,\vec v \in \mathbb{R}^m\)
 	\item \(T(k \vec v) = k T( \vec v)\) for a scalar k.
 \end{itemize}
-\par \noindent Let's demonstrate that the two transformations we've examined are indeed linear transformations. Let \(\vec u=<a,b>\) and \( \vec v = <c,d>\) and \(k\) a scalar:
+\par \noindent Let's demonstrate that the two transformations we've examined are indeed linear transformations. Let \(\vec u=<a,b>\) , \( \vec v = <c,d>\) and \(k\) a scalar:
 \newline
 \newline
 \begin{minipage}[c]{.5\linewidth}
@@ -338,21 +338,21 @@ T(\vec u) + T(\vec v) =
 \[=
 \left(\begin{array}{@{}c@{}}
 	a-c+d-f \\
-	a + 2b - 4c + d + 2d - 4f \\
+	a + 2b - 4c + d + 2e - 4f \\
 \end{array}\right)
 \]
 \[
 T(\vec u + \vec v) = 
 \left(\begin{array}{@{}c@{}}
 	(a+d) - (c+f) \\
-	(a+d) + 2(b-e)-4(c+f)\\
+	(a+d) + 2(b+e)-4(c+f)\\
 \end{array}\right)
 \]
 \[
 =
 \left(\begin{array}{@{}c@{}}
 	a-c+d-f \\
-	a + 2b - 4c + d + 2d - 4f \\
+	a + 2b - 4c + d + 2e - 4f \\
 \end{array}\right)
 \]
  \par\noindent \textbf{First condition met}
@@ -360,19 +360,19 @@ T(\vec u + \vec v) =
 T(k \vec u) = 
 \left(\begin{array}{@{}c@{}}
 	ak - ck \\
-	ak + 2yk - 4zk \\
+	ak + 2bk - 4ck \\
 \end{array}\right)=
 k
 \left(\begin{array}{@{}c@{}}
 	a - c \\
-	a + 2y - 4z \\
+	a + 2b - 4c \\
 \end{array}\right)
 \]
 \[
 kT(\vec u) = k
 \left(\begin{array}{@{}c@{}}
 	a - c \\
-	a + 2y - 4z \\
+	a + 2b - 4c \\
 \end{array}\right)
 \]
 \par\noindent \textbf{Second condition met}	
@@ -442,7 +442,7 @@ T(\vec u + \vec v) =
 	z - y
 \end{array}\right)
 \]
-\par\noindent Let \(\vec u=<a,b>\) and \( \vec v = <c,d>\).
+\par\noindent Let \(\vec u=<a,b,c>\) and \( \vec v = <d,e,f>\).
 \newline
 \par\noindent We test the first condition:	
 \[
@@ -457,8 +457,8 @@ T(\vec u) + T(\vec v) =
 \[
 T(\vec u + \vec v) = 
 \left(\begin{array}{@{}c@{}}
-	a+d+b+e\\
-	b+e+c+f \\
+	(a+d)+(b+e)\\
+	(b+e)+(c+f) \\
 	(a+d) - (c+f) \\
 	(c+f) - ( b + e)
 \end{array}\right)=
@@ -575,7 +575,7 @@ T
 	1 & 0 & 0\\
 	0 & 0 & 1 \\
 	0 & 0 & 0 \\
-	0 & 1 & 0
+	0 & -1 & 0
 \end{array}\right)
 \]
 \newline
@@ -691,17 +691,18 @@ T
 	y \\
 \end{array}\right)= B
 \]
-\par \noindent For \( \vec v = <1,1>\), this transformation yields \(<1,1.5>\). On the diagram below, we see on the left the result of two of these vectors in addition to the vector \(\vec v=<-1,-1>\). On the right, we see the same representation but only showing the tips of the vectors.
+\par \noindent For \( \vec v = <1,1>\), this transformation yields \(<1,1.5>\). On the diagram below, we see on the left the result of transforming two of these vectors in addition to the vector \(\vec v=<-1,-1>\). On the right, we see the same representation but only showing the tips of the vectors.
 
 \begin{center}
 	\includegraphics[width=8cm]{scale.png}\\
 	\textbf{Figure 4}
 \end{center}
 
-\par\noindent If we can imagine every pixel of the image as being the tip of a vector, and apply the transformation described above we will see that the image stretches vertically:
+\par\noindent If we can imagine every pixel of the image as being the tip of a vector, and apply the transformation we will see that the image stretches vertically:
 
 \begin{center}
 	\includegraphics[width=4cm]{cate-original.jpg}
+	\includegraphics[width=2cm]{r-arrow.png}
 	\includegraphics[width=4cm]{cate-scaled.jpg}\\
 	\textbf{Figure 5}
 \end{center}
@@ -719,7 +720,7 @@ T
 \end{array}\right)= B
 \]
 
-\par \noindent Supposed we provided \(\vec v = <1,1>\) to the transformation, in return we would get \(<2.5,1>\). The diagram below shows the result of transforming a few vectors:
+\par \noindent Supposed we provided \(\vec v = <1,1>\) to the transformation, in return we would get \(<2.5,1>\). The diagram below shows the result of transforming \(<1,1>\) and \(<-1,-1>\):
 
 \begin{center}
 	\includegraphics[width=8cm]{shear.png}\\
@@ -730,6 +731,7 @@ T
 
 \begin{center}
 	\includegraphics[width=4cm]{cate-original.jpg}
+	\includegraphics[width=2cm]{r-arrow.png}
 	\includegraphics[width=5.5cm]{cate-sheared.jpg}\\
 	\textbf{Figure 7}
 \end{center}
