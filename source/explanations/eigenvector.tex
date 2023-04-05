@@ -25,7 +25,7 @@
 	\begin{flalign*}
 				A\vec v - \lambda \vec v I = 0 \therefore \vec v (A - \lambda I) = 0
 	\end{flalign*}
-	\par\noindent Of particular interest is \(det( A - \lambda I) = 0\) as it produces a \textbf{characteristic polynomial}. The \( \lambda \) value that solves for this equation is the eigenvalue.
+	\par\noindent Of particular interest is \(det( A - \lambda I) = 0\) as it produces a \textbf{characteristic polynomial}. The \( \lambda \) values that solve for this equation are the eigenvalues.
 	\newline
 
 	
@@ -38,7 +38,7 @@
 		\item Determine the vector \(A - \lambda I\)
 		\item Derive the characteristic polynomial by taking the determinant of \(A - \lambda I\)
 		\item Calculate the root(s) of the characteristic polynomial
-		\item Substitute the root into \(\lambda\) for the vector obtained in step 1
+		\item Substitute the root into \(\lambda\) for the matrix obtained in step 1
 		\item Simplify step 4 by using an augmented matrix
 		\item Collect the eigenvector
 	\end{enumerate}
@@ -134,7 +134,7 @@
 \]
 \par \noindent The resulting vector \(<5,0>\) differs from the eigenvector only by a factor, and thus it has the same direction as \(<1,0>\).
 \newline
-\par \noindent The transformation above is an example of a sheer. In the context of an image transformation, we can imagine that every vector shifts to the right or left only. On the image transformation below, the blue arrow will have the same direction as the transformed vector, differing only by scale.
+\par \noindent The transformation above is an example of a sheer. In the context of an image transformation, we can imagine that every vector shifts to the right or left only. On the image transformation in Figure 1, the blue arrow will have the same direction as the transformed vector, differing only by scale.
 \end{minipage}
 \begin{minipage}[c]{.5\linewidth}
 \begin{center}
@@ -187,7 +187,7 @@ det(A - \lambda I) = (1 - \lambda)(\frac{3}{2} - \lambda)
 \par \noindent Determine the eigenvector for \(\lambda=1 \):
 \[ 
 \left(\begin{array}{@{}cc@{}}
-	0 & 0 \\
+	1-1 & 0 \\
 	0 & \frac{3}{2} - 1 \\
 \end{array}\right) 
 \left(\begin{array}{@{}c@{}}
@@ -212,10 +212,6 @@ det(A - \lambda I) = (1 - \lambda)(\frac{3}{2} - \lambda)
 \left(\begin{array}{@{}cc@{}}
 	0 & 0 \\
 	0 & 1\\
-\end{array}\right) \xrightarrow[]{R_1 <-> R_2}
-\left(\begin{array}{@{}cc@{}}
-	0 & 1 \\
-	0 & 0\\
 \end{array}\right)
 \]
 \par\noindent Given \(\vec v = <x,y>\), x can be any real number, but \(y\) has to equal 0. The eigenvector is \(<1,0>\). 
@@ -224,7 +220,7 @@ det(A - \lambda I) = (1 - \lambda)(\frac{3}{2} - \lambda)
 \[ 
 \left(\begin{array}{@{}cc@{}}
 	1 - \frac{3}{2} & 0 \\
-	0 & 0 \\
+	0 & \frac{3}{2} - \frac{3}{2} \\
 \end{array}\right) 
 \left(\begin{array}{@{}c@{}}
 	x \\
@@ -267,11 +263,11 @@ det(A - \lambda I) = (1 - \lambda)(\frac{3}{2} - \lambda)
 	\end{array}\right) 
 	=   
 	\left(\begin{array}{@{}c@{}}
-		3 \\
 		0 \\
+		3 \\
 	\end{array}\right) 
 	\]
-	\par \noindent The resulting vector \(<3,0>\) differs from the eigenvector \(<1,0>\) by only scaling. If we had plugged in \(<2,0>\) we would have obtained \(<2,0>\) which differs from the eigenvector \(<0,1>\) only by  scale.
+	\par \noindent The resulting vector \(<0,3>\) differs from the eigenvector \(<0,1>\) by only scaling. If we had plugged in \(<2,0>\) we would have obtained \(<2,0>\) which differs from the eigenvector \(<1,0>\) only by  scale.
 \end{minipage}
 \begin{minipage}[c]{.5\linewidth}
 	\begin{center}
