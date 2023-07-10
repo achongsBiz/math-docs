@@ -1,6 +1,13 @@
+
 \documentclass{article}
 \usepackage{amsmath}
 \usepackage[margin=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{cancel}
+
 
 \begin{document}
 
@@ -14,11 +21,107 @@
 \par \noindent We will first summarize derivatives. Given a function \( f(x)\), its derivative \(f'(x)\), describes the instantaneous rate of change at \(x\).
 The formal definition of the derivative is as follows:
 
-\begin{flalign}
+\begin{flalign*}
 	f'(x) = \lim_{\Delta x \to  0 } \frac{f(x+ \Delta x) - f(x)}{\Delta x}
-\end{flalign}
+\end{flalign*}
 
-\par\noindent From Expression (1) we can derive all the derivatives found on a textbook table:
+\par\noindent From the expression above we can derive all the derivatives found on a textbook table.
+
+\section{Integrals}
+
+
+\begin{minipage}{.6\linewidth}		
+	
+	\par \noindent A definite integral across a continuous interval \([a,b]\) is defined as:
+	
+\begin{flalign*}
+	\int_{a}^{b} f(x) dx = \lim_{n \to  \infty } \sum_{i=1}^{n} f(t) \Delta x
+\end{flalign*}
+	
+	\begin{center}
+		t is a point within an interval of width \(\Delta x\)
+	\end{center}
+
+	\par \noindent From a practical standpoint, the definite integral tells us the area under the curve from point \(a\) to \(b\). 
+	\newline
+	\par\noindent In Figure 1, we try and approximate the area under \(x^2\) for the interval \([0,1]\) by creating rectangles with heights of \(f(t)\) and width of \( \Delta x\). Using more rectangles, with smaller values of \( \Delta x\) gets us an increasingly accurate measure of the area.
+
+\end{minipage}
+\begin{minipage}[c]{.4\linewidth}
+	\includegraphics[width=7cm]{rsum.png}
+	
+	\begin{center}
+		Figure 1
+	\end{center}
+	
+\end{minipage}
+\newline
+\newline
+\par \noindent Given a function \(f(x)\) and \(F(x)\), if \(F'(x) = f(x)\) then we say that \(F(x)\) is the anti-derivative of \(f(x)\). This is one key connection between derivatives and integrals. Now we can define an \textbf{indefinite integral} as:
+
+\begin{flalign*}
+	\int f(x) dx = F(x) + C
+\end{flalign*}
+
+\par \noindent In this expression \(C\) is an arbitrary constant. This is needed for the following situation: Suppose we have \(x^2 + 3\) or \(x^2 + 5\), taking the derivative of either expression will result in \(2x\).
+\newline
+\par \noindent Using the Second Fundamental Theorem of Calculus, which we will discuss later, the \textbf{definite integral} can be defined as:
+
+\begin{flalign*}
+	\int_{a}^{b} f(x) dx = F(b) - F(a) 
+\end{flalign*}
+
+
+\section{Mean Value Theorem}
+\begin{minipage}{.6\linewidth}		
+
+\par \noindent Given a continuous function \(f\) on a closed interval \([a,b]\), then there is a point \(c\), such that \(f'(c)\) is equivalent to the slope of the secant line that runs from points \(a\) and \(b\). 
+
+\begin{flalign*}
+	\frac{f(b)-f(a)}{b-a} = f'(c)
+\end{flalign*}
+
+	\par\noindent In Figure 2 the line that runs through points \(a\) and \(b\) has the same slope as the tangent line that runs through point \(c\)
+
+
+
+	
+\end{minipage}
+\begin{minipage}[c]{.4\linewidth}
+	\includegraphics[width=7cm]{sec.png}
+	
+	\begin{center}
+		Figure 2
+	\end{center}
+	
+
+\end{minipage}
+
+\section {Mean Value Theorem of Integrals}
+
+\begin{minipage}{.6\linewidth}		
+
+\par \noindent Given a continuous function \(f\) there exists a value \(c\) such that
+
+\begin{flalign*}
+	\int_{a}^{b} f(x) dx = f(c)(b-a)
+\end{flalign*}
+
+	\par\noindent In Figure 3 the mean value theorem of integrals predicts that the area under the curve from points a to b is equivalent to the purple edged rectangle with a height of \(f(c)\) and length \(b-a\).
+ 	
+	
+\end{minipage}
+\begin{minipage}[c]{.4\linewidth}
+		\includegraphics[width=7cm]{mvt-int.png}
+	
+	\begin{center}
+		Figure 3
+	\end{center}
+	
+
+	
+\end{minipage}
+
 
 \section{First Fundamental Theorem of Calculus}
 
@@ -31,7 +134,7 @@ The formal definition of the derivative is as follows:
 	F'(x) = \lim_{\Delta x \to  0 } \frac{\int_{a}^{x + \Delta x}f(t)dt - \int_{a}^{x}f(t)dt}{\Delta x} \\ \\
 	F'(x) = \lim_{\Delta x \to  0 } \frac{\int_{x}^{x + \Delta x}f(t)dt}{\Delta x}
 \end{flalign*}
-\par\noindent By the \textbf{Mean Value Theorem} we know that there is a value \(c\) such that:
+\par\noindent By the \textbf{Mean Value Theorem of Integrals} we know that there is a value \(c\) such that:
 
 \begin{flalign*}
 f(c) \Delta x = \int_{x}^{x + \Delta x}f(t)dt
@@ -57,16 +160,56 @@ F'(x)= \lim_{\Delta x \to  0 } f(c) \Delta x
 \newline
 \par\noindent \textbf{Derivation:}
 \newline
-\par \noindent Let \(g(x) = \int_{a}^{x}f(t)dt\). Applying the First Fundamental Theorem we know that \(g'(x) = f(x)\). If \(F(x)\) is any antiderivative of \(f(x)\) then \(F(x) = g(x) + c\). Let's evaluate \(F(b) - F(a)\):
+\par\noindent There are infinite real numbers between \(a\) and \(b\), so we can say that:
 
 \begin{flalign*}
-	F(b) - F(a) \\
-	= (g(b) + c) - (g(a) + c) \\
-	= g(b) - g(a) \\
-	= \int_{a}^{b} f(t) dt - \int_{a}^{a}f(t)dt \\
-	=  \int_{a}^{b} f(t) dt - 0 \\
-	= \int_{a}^{b} f(t) dt
+	a = x_0 < x_1 < x_2 < ... < x_{n-1} < x_n = b
 \end{flalign*}
+
+\par\noindent We can replace \(a\) and \(b\) with \(x_0\) and \(x_n\) respectively:
+
+\begin{flalign*}
+	F(b) - F(a) = F(x_n) - F(x_0)
+\end{flalign*}
+
+\par\noindent Next, we insert a series of self-cancelling expressions:
+
+\begin{flalign*}
+	F(b) - F(a) = F(x_n) + (-F(x_{n-1}) + F(x_{n-1})) +  (-F(x_{n-2}) + F(x_{n-2})) + ... + (-F(x_1) + F(x_1)) - F(x_0) \\
+	=(F(x_n) - F(x_{n-1})) +  (F(x_{n-1}) - F(x_{n-2})) + ... + (F(x_2) - F(x_1)) + (F(x_1) - F(x_0))
+\end{flalign*}
+
+\par \noindent This result can be summarized with the summation:
+
+\begin{flalign*}
+		F(b) - F(a) = \sum_{i=1}^{n} (\;\;F(x_i) - F(x_{i-1})\;\;)
+\end{flalign*}
+
+\par\noindent By the Mean Value Theorem of Integrals we know that there is a value \(c\) such that \\ \(F(x_i) - F(x_{i-1}) = F'(c)(x_i - x_{i-1})\). We can now rewrite \(F(b) - F(a)\) as:
+
+\begin{flalign*}
+F(b) - F(a) = \sum_{i=1}^{n} (\;\;F'(c)(x_i - x_{i-1})\;\;)
+\end{flalign*} 
+
+\par\noindent By the First Fundamental Theorem of Calculus we know that \(F'(c) = f(c)\) so we now have:
+
+\begin{flalign*}
+F(b) - F(a) = \sum_{i=1}^{n} (\;\;f(c)(x_i - x_{i-1})\;\;)
+\end{flalign*}
+
+\par\noindent If we take the limit for both sides we will be left with definition of the definite integral on the right hand side. This is the same definition we saw in section 2:
+
+\begin{flalign*}
+	\lim_{n \to  \infty } (\;\;F(b) - F(a)\;\;) = \lim_{n \to  \infty } \sum_{i=1}^{n} (\;\;f(c)(x_i - x_{i-1})\;\;) \\
+	F(b) - F(a) = \lim_{n \to  \infty } \sum_{i=1}^{n} (\;\;f(c)(x_i - x_{i-1})\;\;)
+\end{flalign*}
+
+\par\noindent We are left with:
+
+\begin{flalign*}
+	\int_{a}^{b} f(x) dx = F(b) - F(a) 
+\end{flalign*}
+
 \newpage
 \section{Product Rule}
 
@@ -76,7 +219,7 @@ F'(x)= \lim_{\Delta x \to  0 } f(c) \Delta x
 	h'(x) = \lim_{h \to  0 }\frac{f(x+h)g(x+h) - f(x)g(x)}{h}
 \end{flalign*}
 
-\par\noindent We'll add two terms that cancel each other out (but will help us derive the rule): \(-f(x+h)g(x) + f(x+h)g(x)\):
+\par\noindent We'll add the following two terms which cancel each other out, \(-f(x+h)g(x) + f(x+h)g(x)\):
 
 \begin{flalign*}
 		h'(x) = \lim_{h \to  0 }\frac{f(x+h)g(x+h) -f(x+h)g(x) + f(x+h)g(x) - f(x)g(x)}{h} \\
@@ -84,9 +227,9 @@ F'(x)= \lim_{\Delta x \to  0 } f(c) \Delta x
 		= \lim_{h \to  0 }\frac{f(x+h)(g(x+h) - g(x))}{h} + \lim_{h \to  0 }\frac{g(x)(f(x+h))-f(x)}{h} \\
 \end{flalign*}
 
-\par\noindent From this result, we see that \(\lim_{h \to  0 } f(x+h)\) is just \(f(x)\). We can also see that \(\lim_{h \to  0 } \frac{g(x+h)-g(x)}{h}\) is \(g'(x)\).
+\par\noindent The limit \(\lim_{h \to  0 } f(x+h)\) is just \(f(x)\). We can also see that \(\lim_{h \to  0 } \frac{g(x+h)-g(x)}{h}\) is \(g'(x)\).
 \newline
-\par\noindent We also observe that \(\lim_{h \to  0 }g(x) = g(x)\), and \(\lim_{h \to  0 }\frac{f(x+h) - f(x)}{h}\) is the definition of \(f'(x)\).
+\par\noindent We also observe that \(\lim_{h \to  0 }g(x) = g(x)\) and \(\lim_{h \to  0 }\frac{f(x+h) - f(x)}{h}\) is the definition of \(f'(x)\).
 
 \section{Quotient Rule}
 
@@ -100,7 +243,7 @@ F'(x)= \lim_{\Delta x \to  0 } f(c) \Delta x
 	=\lim_{h \to  0 } \frac{f(x+h)g(x) - f(x)g(x+h)}{g(x+h)g(x)}\;\frac{1}{h}
 \end{flalign*}
 
-\par\noindent We'll add two terms that cancel each other out (but will help us derive the rule): \(-f(x)g(x) + f(x)g(x)\):
+\par\noindent We'll add to the numerator two terms that cancel each other out \(-f(x)g(x) + f(x)g(x)\):
 
 \begin{flalign*}
 	h'(x)=\lim_{h \to  0 } \frac{f(x+h)g(x) -f(x)g(x) + f(x)g(x) - f(x)g(x+h)}{g(x+h)g(x)}\;\frac{1}{h} \\
@@ -111,12 +254,32 @@ F'(x)= \lim_{\Delta x \to  0 } f(c) \Delta x
 
 \par \noindent From these results we can see that: 
 \newline
-\par\noindent \(\lim_{h \to  0 } \frac{1}{g(x+h)g(x)}\) is \(g'(x)^2\)
+\par\noindent \(\lim_{h \to  0 } \frac{1}{g(x+h)g(x)}\) is \( \frac{1}{g(x)^2}\)
 \newline
-\par \noindent \(\lim_{h \to  0 }(g(x)\frac{f(x+h) - f(x)}{h}\) is \(g(x)f'(x)\).
+\par \noindent \( \lim_{h \to  0 }g(x)\frac{f(x+h) - f(x)}{h}\) is \(g(x)f'(x)\).
 \newline
-\par \noindent \(\lim_{h \to  0 }(f(x)\frac{g(x+h) - g(x)}{h}\) is \(f(x)g'(x)\).
+\par \noindent \( \lim_{h \to  0 }f(x)\frac{g(x+h) - g(x)}{h}\) is \(f(x)g'(x)\).
 \newpage
+
+\section {Chain Rule}
+
+\par \noindent Given a composition relationship \(h(x) = f(g(x))\) then \(h'(x) = f'(g(x))g'(x)\). 
+\newline
+\par \noindent Let's suppose that we're interested in the derivative at a specific point \(a\), so we can say:
+
+\begin{flalign*}
+	\lim_{x \to  a } \frac{f(g(x)) - f(g(a))}{x-a}
+\end{flalign*}
+
+\par \noindent If we multiply the entire expression by \(\frac{g(x)-g(a)}{g(x)-g(a)}\):
+
+\begin{flalign*}
+	\lim_{x \to  a } \frac{f(g(x)) - f(g(a))}{x-a}\;\; \frac{g(x)-g(a)}{g(x)-g(a)} \\
+	= \lim_{x \to  a } \frac{f(g(x)) - f(g(a))}{g(x)-g(a)} \;\; \frac{g(x)-g(a)}{x-a}
+\end{flalign*}
+
+\par\noindent The left fraction corresponds to the rate of change \(f'(g(a))\), while the right fraction corresponds to the rate of change \(g'(a)\)
+
 
 \section {Power Rule}
 
@@ -174,7 +337,7 @@ F'(x)= \lim_{\Delta x \to  0 } f(c) \Delta x
 	f'(x) = \lim_{h \to  0 } \frac{\sin(x+h) - \sin x}{h} \\
 \end{flalign*}
 
-\par \noindent Using the trig identity \(\sin (x+h) = \sin x \cos h + \cos x \sin h\), we can rewrite the numerator:
+\par \noindent Using the trig identity \(\sin (x+h) = \sin x \cos h + \cos x \sin h\) we can rewrite the numerator:
 
 \begin{flalign*}
 	f'(x) = \lim_{h \to  0 } \frac{\sin x \cos h + \cos x \sin h - \sin x}{h} \\
@@ -284,7 +447,7 @@ F'(x)= \lim_{\Delta x \to  0 } f(c) \Delta x
 \par \noindent We can apply the following rule of natural logs: \( \ln (x+h) - \ln x = \ln ( \frac{x+h}{x})\):
 
 \begin{flalign*}
-f'(x) = \lim_{h \to  0 } \frac{1}{h} \ln(\frac{x+h}{h})	
+f'(x) = \lim_{h \to  0 } \frac{1}{h} \ln(\frac{x+h}{x})	
 \end{flalign*}
 
 \par \noindent Applying the power rule of natural logs we get:
@@ -314,7 +477,7 @@ f'(x) = \lim_{h \to  0 } \frac{1}{h} \ln(\frac{x+h}{h})
 	f'(x) = \frac{1}{x}
 \end{flalign*}
 
-\par \noindent Let's take the derivative of \( \ln x\). We know that \(y= \ln x\) is basically stating that \(e^y = x\), to which we'll apply implicit differentiation:
+\par \noindent Let's take the derivative of \( \ln x\). We know that \(y= \ln x\) is just stating that \(e^y = x\), to which we'll apply implicit differentiation:
 
 \begin{flalign*}
 	\frac{d}{dx} [e^y] = \frac{d}{dx} [x] \\
@@ -344,7 +507,7 @@ f'(x) = \lim_{h \to  0 } \frac{1}{h} \ln(\frac{x+h}{h})
  	f'(x)= e^x \lim_{h \to  0 }\frac{e^{h} - 1}{h}
  \end{flalign*}
 
-\par \noindent Let \(y=e^h - 1\), or \(e^h = y + 1\) we observe that \(\lim_{h \to  0 } y = 0\). Taking the natural log of boths sides:
+\par \noindent Let \(y=e^h - 1\), or \(e^h = y + 1\), we observe that \(\lim_{h \to  0 } y = 0\). Taking the natural log of boths sides:
 
 \begin{flalign*}
 	\ln (e^h) = \ln(y+1) \\
