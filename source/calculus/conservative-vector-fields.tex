@@ -1,0 +1,302 @@
+
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{xfrac}
+
+
+\begin{document}
+	
+	\title{Conservative Vector Fields}
+	\author{Andy Chong Sam}
+	\date{}
+	\maketitle
+	
+	\section{Fundamental Theorem of Line Integrals}
+	
+	\par\noindent If \(C\) is a smooth curve defined by \(\vec r(t)\) where \(a \leq t \leq b\), and we have a function \(f\) whose gradient \(\nabla f\) is continuous along \(C\) then:
+	
+	\begin{flalign}
+		\int_{C} \nabla f \; d\vec r = f(\;\vec r(a)\;) - f(\;\vec r(b)\;)
+	\end{flalign}
+
+	\par\noindent Expression (1) is the \textbf{Fundamental Theorem of Line Integrals}. The implication of this theorem is that of \textbf{path independence}. The line integral for the gradient of a function is independent of the path \(C\), provided we start at point \(a\) and end at point \(b\). If a vector field exhibits path independence then we say that the field is \textbf{conservative}.
+	\newline
+	\par\noindent We will discuss the steps to derive Expression (1). Let's suppose \(f\) is a function of \(x\), \(y\), and \(z\). The path \(C\) is described parametrically by a vector function \(r(t)=<x(t), y(t), z(t)>\) We know the following from the definition of line integrals for a vector field:
+	\begin{flalign*}
+		\int_{C} \nabla f \; d\vec r = \int_{a}^{b} \nabla f(\;r(t)\;) \cdot r'(t)\;dt
+	\end{flalign*}
+	\par\noindent Let's expand the dot product of the right hand side:
+	\begin{flalign*}
+		\int_{a}^{b} \nabla f(\;r(t)\;) \cdot r'(t)\;dt \\
+		= \int_{a}^{b} <\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}, \frac{\partial f}{\partial z}>\cdot<\frac{dx}{dt},\frac{dy}{dt},\frac{dz}{dy}>\;dt \\
+		= \int_{a}^{b} \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt} + \frac{\partial f}{\partial z}\frac{dz}{dt}\;dt
+	\end{flalign*}
+
+	\par\noindent The above result is an example of a \textbf{type I partial derivative}, and is what we would have obtained if we evaluated: \(\frac{d}{dt}[f(\;r(t)\;)]\).The integral can now be rewritten like so:
+	
+	\begin{flalign*}
+\int_{a}^{b} \frac{\partial f}{\partial x}\frac{dx}{dt} + \frac{\partial f}{\partial y}\frac{dy}{dt} + \frac{\partial f}{\partial z}\frac{dz}{dt}\;dt \\
+= \int_{a}^{b}\frac{d}{dt} [\;f(r(t))\;]\;dt
+	\end{flalign*}
+
+	\par \noindent By the First Fundamental Theorem of Calculus:
+	
+	\begin{flalign*}
+		\int_{a}^{b}\frac{d}{dt} [\;f(r(t))\;]\;dt = f(\;r(b)\;) - f(\;r(a)\;)	
+	\end{flalign*}
+	\newpage
+	 	 \framebox{
+		\parbox{\linewidth}{
+			\par\noindent \textbf{Ex. 1} Evaluate \(\int_{C} \nabla f\; d \vec r\) where \(f(x,y) = ye^{x^2-1} + 4x\sqrt{y}\). The path \(C\) is defined by \(r(t)=<1-t\;\;,\;\;2t^2-2t>\), where \(0 \leq t \leq 2\):
+			\newline
+			\par\noindent Source: Paul's Online Notes 
+			\par\noindent \text{https://tutorial.math.lamar.edu/Problems/CalcIII/FundThmLineIntegrals.aspx}
+			\newline
+			
+			\par\noindent We can first calculate \(\nabla f\):
+			\begin{flalign*}
+				\nabla f = <\frac{\partial f}{\partial x},\frac{\partial f}{\partial y}>
+				\\ = <2xye^{x^2-1}+4\sqrt{y}\;\;,\;\; e^{x^2-1} + \frac{2x}{\sqrt{y}}>
+			\end{flalign*}
+		
+			\par\noindent We proceed to calculate \(r(0)\) and \(r(2)\):
+			
+			\begin{flalign*}
+				r(2) = <-1,4> \\
+				r(0) = <1,0>
+			\end{flalign*}
+		
+			\par\noindent We can now evaluate \(f(-1,4)\) and \(f(1,0)\):
+			
+			\begin{flalign*}
+				f(-1,4) = 4e^0 + -4\sqrt{4} = -4 \\
+				f(1,0) = 0
+			\end{flalign*}
+		
+			 \par\noindent We can finally use the fundamental theorem:
+			 
+			 \begin{flalign*}
+			 	\int_{C}\nabla f\;d\vec r = f(\;r(2)\;) - f(\;r(1)\;) = f(-1,4) - f(1,0) \\
+			 	= -4
+			 \end{flalign*}
+		}
+	}
+	\newpage
+	
+	
+	\section{Test for Conservative Fields}
+	
+	\par\noindent In the previous section we started our analysis from a function \(f\) and showed that its gradient, \(\nabla f\), is conservative. We could start out with a vector field \(\vec F\) and determine if it's conservative. Such a test is useful as we can only apply the fundamental theorem of line integrals if the field is conservative.
+	\newline
+	\par\noindent We will deal with the case of a vector field containing an \(x\) and a \(y\) component. Given \(\vec F = <P,Q>\), \(\vec F\) is conservative if:
+	
+	\begin{flalign}
+		\frac{\partial}{\partial x} [Q] = \frac{\partial}{\partial y} [P]
+	\end{flalign}
+
+	\par\noindent Deriving this requires understanding curl which we'll discuss in detail on the next chapter. If \(\vec F = <P,Q>\), \(P=x(t)\), and \(Q=y(t)\), then the curl is defined as:
+	
+	\begin{flalign}
+		\text{curl}\; \vec F = (\frac{\partial Q}{\partial x} - \frac{\partial P}{\partial y})
+	\end{flalign} 
+
+	\par\noindent For a function \(f\), its gradient is a vector field \(\nabla f = <\frac{\partial f}{\partial x}, \frac{\partial f}{\partial y}>\). So if, \(\nabla f = \vec F\) from the definition of curl, then:
+	
+	\begin{flalign*}
+		\text{curl}\; \vec F=\frac{\partial}{\partial x}[\frac{\partial f}{\partial y}] - \frac{\partial}{\partial y}[\frac{\partial f}{\partial x}] = 0
+	\end{flalign*} 
+
+	\par\noindent The curl above evaluates to zero because of \textbf{Clairaut's theorem} which states that when taking second partial derivatives the order of differentiation is not important, in other words:
+	
+	\begin{flalign*}
+\frac{\partial}{\partial x}[\frac{\partial f}{\partial y}] = \frac{\partial}{\partial y}[\frac{\partial f}{\partial x}] \\
+\frac{\partial}{\partial x} [Q] = \frac{\partial}{\partial y} [P]
+	\end{flalign*}
+	
+	\par\noindent So if we have a vector field we can test if it's conservative or not by simply knowing the vector's components. 
+	\newline
+	\newline
+	 \framebox{
+		\parbox{\linewidth}{
+			\par \textbf{Ex. 2} is the vector field \((xy + y^2)\vec i + (x^2 + 2xy)\vec j\) conservative?
+			\newline
+			\par\noindent Source: Stewart, Calculus 8th Edition pg 1094
+			\newline
+			\begin{flalign*}
+				\frac{\partial}{\partial x}[x^2 + 2xy] = 2x + 2y \;\;\;\;\;\;
+				\frac{\partial}{\partial y}[xy + y^2] = x + 2y \\
+			\end{flalign*}
+			\par\noindent Since \(\frac{\partial}{\partial x} [Q] \neq \frac{\partial}{\partial y} [P]\) , the field is not conservative.
+		}
+	}
+\newline
+\newline
+\newline
+	 \framebox{
+	\parbox{\linewidth}{
+		\par \textbf{Ex. 3} is the vector field \((y^2e^{xy})\vec i + ((1 + xy)e^{xy})\vec j\) conservative?
+			\newline
+\par\noindent Source: Stewart, Calculus 8th Edition pg 1094
+\newline
+	\begin{flalign*}
+		\frac{\partial}{\partial x}[(1 + xy)e^{xy}] = ye^{xy} + (1+xy)e^{xy}y = 2e^{xy}y + e^{xy}xy^2 \;\;\;\;\;\;\;
+		\frac{\partial}{\partial y}[y^2e^{xy}] = 2e^{xy}y + e^{xy}xy^2
+	\end{flalign*}
+			\par\noindent Since \(\frac{\partial}{\partial x} [Q] = \frac{\partial}{\partial y} [P]\) , the field is conservative.
+}}
+\newpage
+\section{Potential Functions}
+\par\noindent If a field is conservative, it's possible to recover \(f\) from \(\nabla f\). The recovered function is known as a \textbf{potential function}. Applying algorithm to extract \(f\) is shown on the two examples below:
+\newline
+\newline
+\newline
+\framebox{
+\parbox{\linewidth}{
+\par \noindent \textbf{Ex. 4} Find a potential function for \((x^2y^3)\vec i + (x^3y^2)\vec j\).
+\newline
+\par\noindent Source: Stewart, Calculus 8th Edition pg 1094
+\newline
+\par\noindent \textbf{Step 1: We first check to see if the field is conservative.}
+\begin{flalign*}
+	\frac{\partial}{\partial x}[x^3y^2] = \frac{\partial}{\partial y}[x^2y^3] = 3x^2y^2
+\end{flalign*}
+\par\noindent The field is conservative, we can proceed.
+\newline
+\par\noindent \textbf{Step 2: Derive a candidate function with respect to x:}
+\newline
+\par\noindent If \(x^2y^3\) is the \(x\) component of \(\nabla f\), then we can integrate it with respect to \(x\) to derive \(f_c\):
+
+\begin{flalign*}
+f_c = \int \frac{\partial f}{\partial x} \;dx = \int x^2y^3\;dx = \frac{x^3y^3}{3} + h(y)
+\end{flalign*}
+
+\par\noindent \textbf{Step 3: Derive a candidate function with respect to y:}
+\newline
+\par\noindent We start out \(f_c\) from the previous step and differentiate with respect to y: 
+\begin{flalign*}
+	\frac{\partial}{\partial y}[\frac{x^3y^3}{3}] = x^3y^2 + h'(y)
+\end{flalign*}
+\par\noindent Since \(\frac{\partial f_c}{\partial y}\) is equivalent to the \(y\) component of the field, \(h'(y)\) must be zero. We can conclude that the original candidate is a potential function:
+\begin{flalign*}
+	f = \frac{x^3y^3}{3}
+\end{flalign*}
+}}
+\newline
+\newline
+\newline
+\framebox{
+	\parbox{\linewidth}{
+	\par \noindent \textbf{Ex. 5} Find a potential function for \( (y^2e^{xy})\vec i + (\;(1+xy)e^xy\;) \vec j  \)
+	\newline
+	\par\noindent Source: Stewart, Calculus 8th Edition pg 1095
+	\newline
+	\par \noindent The field is conservative:
+	\begin{flalign*}
+		\frac{\partial}{\partial y} [y^2e^xy] = \frac{\partial}{\partial x} [(1+xy)e^{xy}] = 2ye^{xy} + xy^2e^{xy}
+	\end{flalign*}
+\par\noindent Next, we try and find a candidate \(f_c\) by integrating the field's \(x\) component with respect to \(x\):
+\begin{flalign*}
+	f_c = \int y^2e^{xy}\;dx  = ye^{xy} + g(y)
+\end{flalign*}
+\par\noindent We can now differentiate the candidate function with respect to \(y\) and proceed to compare the result with the field's \(y\) component:
+\begin{flalign*}
+\frac{\partial}{\partial y}[ye^{xy}] = e^{xy} + xye^{xy} + g'(y)
+\end{flalign*}
+\par\noindent Since the result above matches the \(y\) component in the field, we can conclude that \(g'(y)\) is zero. The candidate happens to be a potential function:
+\begin{flalign*}
+	f=ye^{xy}
+\end{flalign*}
+
+}}
+\newline
+\newline
+\newline
+\framebox{
+	\parbox{\linewidth}{
+	\par\noindent \textbf{Ex. 6} Find a potential function for \( (yz) \vec i + (xz) \vec j + (xy + 2z) \vec k\). Assume the field is conservative.
+	\newline
+	\par\noindent Source: Stewart, Calculus 8th Edition pg 1095
+	\newline
+	\begin{flalign*}
+		f_c = \int yz \;dx = xyz + g(y,z)
+	\end{flalign*}
+	
+	\par\noindent Next, differentiate the candidate function with respect to \(y\) and compare it against the \(y\) component of the field:
+	
+	\begin{flalign*}
+		\frac{\partial}{\partial y} [xyz] = xz
+	\end{flalign*}
+
+	\par\noindent Our result is equivalent to the field's \(y\) component so we're done with \(y\). Next we differentiate the candidate function with respect to \(z\):
+	
+	\begin{flalign*}
+		\frac{\partial}{\partial z} [xyz] = xy + h'(z) 
+	\end{flalign*}
+
+	\par\noindent Since the \(z\) component of the field is \(xy + 2z\), \(h'(z)\) must be \(2z\). We can conclude the process by integrating \(h'(z)\) to derive \(h(z)\):
+	
+	\begin{flalign*}
+		\int 2z\; dz = z^2 + C
+	\end{flalign*}
+	
+	\par\noindent We collect our findings starting with the candidate function:
+	
+	\begin{flalign*}
+		f = xyz + z^2
+	\end{flalign*}	
+}}
+\newpage
+\section{Final Comprehensive Example}
+
+\par\noindent The Fundamental Theorem of Line Integrals can simplify the calculation of a line integral. Consider the following problem:
+\newline
+\newline
+\framebox{
+	\parbox{\linewidth}{
+		 \par\noindent \textbf{Ex. 7} Given a vector field \(\vec F = (yze^{xz})\vec i + (e^{xz}\vec j) + (xye^{xz})\vec k\) calculate \(\int_{C} \vec F \; d\vec r\), where \(C\) is defined by \(r(t)=<t^2+1, t^2-1, t^2-2t>\).
+		 \newline
+		 \par\noindent Source: Stewart, Calculus 8th Edition pg 1095
+		 \newline
+		 \par\noindent Our first inclination might be to evaluate \( \int_{a}^{b} F(r(t)) \cdot r'(t)\;dt\). We would quickly find out that this results in a rather lengthy integral. 
+		 \newline
+		 \par\noindent However, if we can determine that \(\vec F\) is conservative then we can extract a potential function \(f\) and apply the First Fundamental Theorem. In this case, the field is conservative. If \(P,Q,\) and \(R\) are the components of \(\vec F\), we find that:
+		 \begin{flalign*}
+		 	\frac{\partial P}{\partial y} = \frac{\partial Q}{\partial x} =  ze^{xz}\;\;\;\;\;\;\;\;\;
+		 	\frac{\partial P}{\partial z} = \frac{\partial R}{\partial x} = y(e^{xz} + xze^{xz})\;\;\;\;\;\;\;\;\;
+		 	\frac{\partial Q}{\partial z} = \frac{\partial R}{\partial y} = xe^{xz}
+		 \end{flalign*}
+	 	\par\noindent We can now recover the potential function.
+	 	\begin{flalign*}
+	 		f_c = \int yze^{xz}\;dx = ye^{xz} + g(y,z)\\
+	 		\frac{\partial f_c}{\partial y} = e^{xz} + g'(y,z)
+	 	\end{flalign*}
+ 		\par\noindent Since partial \(f_c\) with respect to \(y\) is equivalent to the \(y\) component of the field, \(g'(y,z)\) must be zero. Let's check partial \(f_c\) with respect to \(z\):
+ 		\begin{flalign*}
+ 			\frac{\partial f_c}{\partial z} = xye^{xz} 
+ 		\end{flalign*}
+ 		\par\noindent Since the result is equivalent to the \(z\) component of the field, we are done. We can conclude that \(f = ye^{xz}\). We are now free to apply the First Fundamental Theorem.
+ 		\newline
+ 		\par\noindent First, let's calculate \(r(0)\) and \(r(2)\):
+ 		\begin{flalign*}
+ 			r(2) = <5,3,0>\;\;\;\;r(0)=<1,-1,0>
+ 		\end{flalign*}
+ 		\par\noindent We can now calculate the integral:
+ 		\begin{flalign*}
+ 			\int_{a}^{b} \vec F\;d\vec r = f(\;r(2)\;) - f(\;r(1)\;) \\
+ 			= 3--1 \\
+ 			= 4 
+ 		\end{flalign*}
+ 		
+		 
+	}}
+
+
+
+
+\end{document}
