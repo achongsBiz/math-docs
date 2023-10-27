@@ -53,6 +53,76 @@
 			\par\noindent Looking again at Figure 1, the central diagram describes a hypothetical counter clockwise rotation from the perspective of \(y\). As \(z\) increases, the \(P\) component of the field becomes more positive and as \(x\) increases, the \(R\) compoment becomes more negative. So to guarantee a positive value we can write \(\frac{\partial P}{\partial z} - \frac{\partial R}{\partial x}\). The same analysis can be performed with Figure 1's right graph.
 			
 
+\section{Derivation of Two Dimension Curl}
+
+	\begin{minipage}{.5\linewidth}		
+		
+		\par \noindent Suppose we have a patch of \(xy\) like the one described in Figure 2. We have here a simple connected region where the path \(C\) can be divided into \(C1 + C2 + C3 + C4\). We have also drawn here some vectors that approximate what the field \(F=<P,Q,R>\) is doing near these points along the four sub paths.
+		\newline
+		\newline
+		So the line integral for the complete path is:
+		\begin{flalign*}
+			\oint_{C} \;F\;dr = \sum_{i=1}^{4} \int_{Ci}\;F\;dr
+		\end{flalign*}
+	
+\end{minipage}
+\begin{minipage}[c]{.5\linewidth}
+	
+	\begin{center}
+		\includegraphics[width=8cm]{curl-deriv.png}
+	\end{center}
+	
+	\begin{center}
+		Figure 2
+	\end{center}
+	
+\end{minipage}
+\newline
+\par\noindent For very small values of \(\Delta x\) and \(\Delta y\) we can state the following:
+\newline
+\begin{flalign*}
+	\int_{C1} \; F\; dr \approx P(a + \Delta x, b) \Delta x \\
+	\int_{C2} \; F\; dr \approx Q(a + \Delta x, b + \Delta y) \Delta y \\
+	\int_{C3} \; F\; dr \approx P(a, b + \Delta y) \Delta x \\
+	\int_{C4} \; F\; dr \approx Q(a, b) \Delta y 
+\end{flalign*}
+\par\noindent Our goal is ultimately to describe the rotational tendency of a field per area of \(\Delta x \Delta y\), albeit an infinitesimally small area. Our strategy here is to look at the horizontal (C1, C3) and vertical paths (C2, C4). Let's start with the horizontal:
+
+\begin{flalign*}
+ \lim_{(x,y) \rightarrow (0,0)} \frac{P(a + \Delta x, b) \Delta x - P(a, b+ \Delta x) \Delta y}{\Delta x \Delta y}
+\end{flalign*}
+
+\par\noindent Note how we treat C3 as a negative because it goes in the opposite direction of C1. Upon canceling out the \(\Delta x\) and evaluating the limit as x approaches zero we are left with:
+
+\begin{flalign*}
+	\lim_{y \rightarrow 0} \frac{P(a, b) - P(a, b+ \Delta y)}{\Delta y}
+\end{flalign*}
+
+\par\noindent If we modify this result by making it negative, we arrive at one of the two components of the two dimension curve:
+
+\begin{flalign*}
+	-\lim_{y \rightarrow 0}  \frac{P(a, b+ \Delta y) -P(a, b)}{\Delta y} = - \frac{\partial P}{\partial y}
+\end{flalign*}
+\newpage
+
+\newpage
+
+\par\noindent We can repeat this analysis for the vertical components:
+
+\begin{flalign*}
+	\lim_{(x,y) \rightarrow (0,0)} \frac{Q(a + \Delta x, b + \Delta y) \Delta x - Q(a, b) \Delta y}{\Delta x \Delta y}
+\end{flalign*}
+
+\par\noindent We take the limit as y approaches zero first and are left with the definition of a partial derivative with respect to \(x\), the remaining component of two dimension curl:
+
+\begin{flalign*}
+	\lim_{x \rightarrow 0} \frac{Q(a + \Delta x, b) - Q(a, b)}{\Delta x} = \frac{\partial Q}{\partial x}
+\end{flalign*}
+
+
+
+
+
 \section{Examples}
 	\framebox{
 		\parbox{\linewidth}{
@@ -116,4 +186,6 @@
 			\nabla \times F = ze^x\;\vec i + xye^z - yze^x\;\vec j -xe^z\;\vec k
 		\end{flalign*}
 }}
+
+
 \end{document}
