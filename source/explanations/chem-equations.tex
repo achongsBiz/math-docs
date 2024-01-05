@@ -1,0 +1,211 @@
+
+\documentclass[12pt]{article}
+\thispagestyle{empty}
+\usepackage{amsmath}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsfonts}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{cancel}
+\usepackage{xfrac}
+\usepackage{listings}
+\usepackage[version=4]{mhchem}
+
+\begin{document}
+	\begin{center}
+		\par\noindent \large \textbf{Gaussian Elimination and Chemical Equations}  [@achongsBiz]
+	\end{center}
+
+	\par\noindent Gaussian Elimination, a foundational technique of Linear Algebra, can be used to systematically balance chemical equations. Suppose we want to balance the following:
+	\begin{flalign*}
+		\ce{C6H12O6 + O2 -> CO2 + H2O}
+	\end{flalign*}
+	
+	\par\noindent The goal is to find coefficients \(a\), \(b\), \(c\), and \(d\) such that:	
+		\begin{flalign*}
+		\ce{\textbf{a}\;C6H12O6 + \textbf{b}\;O2 -> \textbf{c}\;CO2 + \textbf{d}\;H2O}
+	\end{flalign*}
+	\par\noindent We start out by defining a vector that holds the number of atoms for each element on a given term. If we pick \(<\)C,H,O\(>\) the vector corresponding to the first term would be \(<6,12,6>\). With this in mind, the problem can be reformulated:
+	\newline
+	\newline
+	\[
+	a
+	\left(\begin{array}{@{}c@{}}
+		6 \\
+		12 \\
+		6
+	\end{array}\right) + 
+	b
+	\left(\begin{array}{@{}c@{}}
+		0 \\
+		0 \\
+		2
+	\end{array}\right) + 
+	c
+	\left(\begin{array}{@{}c@{}}
+		1 \\
+		0 \\
+		2
+	\end{array}\right) + 
+	d
+	\left(\begin{array}{@{}c@{}}
+		0 \\
+		2 \\
+		1
+	\end{array}\right) =
+	\left(\begin{array}{@{}c@{}}
+	0 \\
+	0 \\
+	0
+\end{array}\right)\;\; \text{...In matrix form:}\;\;
+		\left(\begin{array}{@{}cccc@{}}
+	6 & 0 & 1 & 0\\
+	12 & 0 & 0 & 2\\
+	6 & 2 & 2 & 1 \\
+\end{array}\right)
+\]	
+\newline
+\par\noindent Elementary row operations are applied to simplify the system: 
+\newline
+\[
+		\left(\begin{array}{@{}cccc@{}}
+	6 & 0 & 1 & 0\\
+	12 & 0 & 0 & 2\\
+	6 & 2 & 2 & 1 \\
+\end{array}\right)
+\xrightarrow[]{R_3 - R_1 = R_3}	
+		\left(\begin{array}{@{}cccc@{}}
+	6 & 0 & 1 & 0\\
+	12 & 0 & 0 & 2\\
+	0 & 2 & 1 & 1 \\
+\end{array}\right)
+\]
+\newline
+\par\noindent For readability you can further apply operations to change the matrix to row echelon form but it's not entirely necessary. We can draw conclusions when no further cells can be canceled:\newline
+	%\ce{C6H6 + OH <-->[1.16e\textsuperscript{-10}] C6H5}
+\par\noindent Since row 1 is \(6a + c = 0\), let \(a =1\) and \(c=-6\)
+\par\noindent Since row 2 is \(12a + 2d = 0\), because \(a\) is 1, \(d=-6\)
+\par\noindent Since row 3 is \(2b + c + d = 0\), because \(c=-6\), \(d=-6\), then \(b=6\)
+\newline
+\par\noindent If a coefficient is negative it just means it goes on the right side of the equation. The balanced equation is therefore: 
+\begin{flalign*}
+\ce{C6H12O6 + 6O2 -> 6CO2 + 6H2O}	
+\end{flalign*}
+\par\noindent Also, we know the coefficients are correct since:
+\newline
+	\[
+1
+\left(\begin{array}{@{}c@{}}
+	6 \\
+	12 \\
+	6
+\end{array}\right) + 
+6
+\left(\begin{array}{@{}c@{}}
+	0 \\
+	0 \\
+	2
+\end{array}\right) + 
+-6
+\left(\begin{array}{@{}c@{}}
+	1 \\
+	0 \\
+	2
+\end{array}\right) + 
+-6
+\left(\begin{array}{@{}c@{}}
+	0 \\
+	2 \\
+	1
+\end{array}\right) =
+\left(\begin{array}{@{}c@{}}
+	0 \\
+	0 \\
+	0
+\end{array}\right)\;\;
+\]
+\par\noindent Two additional examples are provided on the next page.
+\newpage
+\framebox{
+	\parbox{\linewidth}{
+		\par\noindent Balance \ce{As + NaOH -> Na3AsO3 + H2}
+		\newline
+		\par\noindent The vector will be \(<\)As, Na, O, H\(>\) which produces the following system:
+		\[
+			\left(\begin{array}{@{}cccc@{}}
+			1 & 0 & 1 & 0\\
+			0 & 1 & 3 & 0\\
+			0 & 1 & 3 & 0\\
+			0 & 1 & 0 & 2 \\
+			\end{array}\right)
+		\]
+		\par\noindent A single row operation can be applied:
+		\[
+\left(\begin{array}{@{}cccc@{}}
+	1 & 0 & 1 & 0\\
+	0 & 1 & 3 & 0\\
+	0 & 1 & 3 & 0\\
+	0 & 1 & 0 & 2 \\
+\end{array}\right)
+\xrightarrow[]{R_2 - R_3 = R_2}
+\left(\begin{array}{@{}cccc@{}}
+	1 & 0 & 1 & 0\\
+	0 & 0 & 0 & 0\\
+	0 & 1 & 3 & 0\\
+	0 & 1 & 0 & 2 \\
+\end{array}\right)	
+\]	
+\par\noindent Row 1 gives us \(a + c = 0\), let \(a=1\) and \(c=-1\).
+\par\noindent Row 3 gives us \(b + 3c = 0\), since \(c=-1\), \(b=3\).
+\par\noindent Row 4 gives us \(b + 2d = 0\), since \(b=3\), \(d=-\frac{3}{2}\)	
+\newline
+\par\noindent Now this gives us \ce{As + 3NaOH -> Na3AsO3 + \frac{3}{2}H2}. We can't have partial coefficients so we'll  multiply both sides by 2 to arrive at the solution:
+\begin{flalign*}
+	\ce{2As + 6 NaOH -> 2 Na3AsO3 + 3H2}
+\end{flalign*}
+}}
+\newline
+\newline
+
+\framebox{
+	\parbox{\linewidth}{
+\par\noindent Balance \ce{NaOH + H2SO4 -> Na2SO4 + H2O}
+\newline
+\par\noindent The vector will be \(<\)Na, O, H, S\(>\), so:
+\[
+\left(\begin{array}{@{}cccc@{}}
+	1 & 0 & 2 & 0\\
+	1 & 4 & 4 & 1\\
+	1 & 2 & 0 & 2\\
+	0 & 1 & 1 & 0 \\
+\end{array}\right) 
+\xrightarrow[]{R_2 - 4R_4 = R_2}
+\left(\begin{array}{@{}cccc@{}}
+	1 & 0 & 2 & 0\\
+	1 & 0 & 0 & 1\\
+	1 & 2 & 0 & 2\\
+	0 & 1 & 1 & 0 \\
+\end{array}\right) 
+\xrightarrow[]{R_3 - R_2 = R_3}
+\left(\begin{array}{@{}cccc@{}}
+	1 & 0 & 2 & 0\\
+	1 & 0 & 0 & 1\\
+	0 & 2 & 0 & 1\\
+	0 & 1 & 1 & 0 \\
+\end{array}\right) 
+\]
+\par\noindent Row 1 is \(a + 2c = 0\), let \(a=2\) so \(c=-1\)
+\par\noindent Row 2 is \(a+d=0\), if \(a=2\) then \(d=-2\)
+\par\noindent Row 3 is \(2b+d=0\), since \(d=-2\) then \(b=1\)
+\par\noindent Row 4 is \(b+c =0\), if \(b=1\) then \(c=-1\)
+\newline
+\par\noindent We have the balanced equation:
+\begin{flalign*}
+	\ce{2NaOH + H2SO4 -> Na2SO4 + 2H2O}
+\end{flalign*}
+
+
+
+}}
+\end{document}
