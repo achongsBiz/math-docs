@@ -84,12 +84,12 @@
 	
 	\begin{flalign*}
 	-\int_{a}^{b}\;P(x,f_2(x))\;dx + \int_{a}^{b}\;P(x,f_1(x))\;dx \\
-	= -\int_{a}^{b}\;P(x,f_2(x)) - \;P(x,f_1(x))\;dx 
+	= -(\;\;\;\int_{a}^{b}\;P(x,f_2(x)) - \;P(x,f_1(x))\;dx\;\;\;) 
 \end{flalign*}
 
 	\par\noindent By the Second Fundamental Theorem of Calculus:
 	\begin{flalign*}
-		-\int_{a}^{b}\;P(x,f_2(x)) - \;P(x,f_1(x))\;dx \\
+		-(\;\;\;\int_{a}^{b}\;P(x,f_2(x)) - \;P(x,f_1(x))\;dx\;\;\;) \\
 		= -\int_{a}^{b}\;\int_{f_1(x)}^{f_2(x)}\;\frac{\partial P}{\partial y}\;dy\;dx \\
 		= 
 		- \int\;\int_{R} \frac{\partial P}{\partial y}\;dA
